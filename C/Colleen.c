@@ -12,7 +12,7 @@ char *strRetForSubject(char *str){
 }
 
 int main(){
-	char *str = "#include <stdio.h>%c%c/*%c%cComment%c*/%c%cchar *strRetForSubject(char *str){%c%c/*%c%c%cComment 2%c%c*/%c%creturn (str);%c}%c%cint main(){%c%cchar *str = %c%s%c;%c%cprintf(str,10,10,10,9,10,10,10,10,9,10,9,9,10,9,10,9,10,10,10,10,9,34,strRetForSubject(str),34,10,9,10,9,10);%c%creturn (0);%c}";
-	printf(str,10,10,10,9,10,10,10,10,9,10,9,9,10,9,10,9,10,10,10,10,9,34,strRetForSubject(str),34,10,9,10,9,10);
+	char *str = "#include <stdio.h>%1$c%1$c/*%1$c%2$cComment%1$c*/%1$c%1$cchar *strRetForSubject(char *str){%1$c%2$c/*%1$c%2$c%2$cComment 2%1$c%2$c*/%1$c%2$creturn (str);%1$c}%1$c%1$cint main(){%1$c%2$cchar *str = %3$c%4$s%3$c;%1$c%2$cprintf(str,10,9,34,strRetForSubject(str));%1$c%2$creturn (0);%1$c}";
+	printf(str,10,9,34,strRetForSubject(str));
 	return (0);
 }
