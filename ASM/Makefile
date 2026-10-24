@@ -4,7 +4,7 @@
 NAME	= Colleen Grace Sully
 
 CC		= gcc
-CFLAGS	= -nostartfiles
+CFLAGS	= 
 
 SRCS = Colleen.s Grace.s Sully.s
 OBJS = $(SRCS:.s=.o)
