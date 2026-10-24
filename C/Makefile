@@ -1,3 +1,5 @@
+.DELETE_ON_ERROR:
+.PHONY: all clean fclean re Colleen Grace cGrace Sully cSully
 
 NAME = Colleen Grace Sully
 
@@ -34,5 +36,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re
