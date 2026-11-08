@@ -11,10 +11,12 @@ int main(){
 	char filename[10];
 	sprintf(filename, "Sully_%d.c", i);
 	FILE *fptr = fopen(filename, "w");
+	if (!fptr)
+		return (1);
 
-	char *str = "int i = %d;%c#include <stdio.h>%c#include <stdlib.h>%c#include <string.h>%c%cint main(){%c%cif (strcmp(__FILE__, %cSully.c%c))%c%c%c--i;%c%cif (i < 0)%c%c%creturn (0);%c%cchar filename[10];%c%csprintf(filename, %cSully_%%d.c%c, i);%c%cFILE *fptr = fopen(filename, %cw%c);%c%c%cchar *str = %c%s%c;%c%c%cfprintf(fptr, str, i, 10, 10, 10, 10, 10, 10, 9, 34, 34, 10, 9, 9, 10, 9, 10, 9, 9, 10, 9, 10, 9, 34, 34, 10, 9, 34, 34, 10, 10, 9, 34, str, 34, 10, 10, 9, 10, 9, 10, 10, 9, 10, 9, 9, 10, 9, 9, 34, 34, 10, 9, 9, 10, 9, 10, 9, 10, 10);%c%cfclose(fptr);%c%c%cif (i >= 0) {%c%c%cchar command[80];%c%c%csprintf(command, %cgcc -Wall -Werror -Wextra %%s -o Sully_%%d && ./Sully_%%d%c, filename, i, i);%c%c%csystem(command);%c%c}%c%creturn (0);%c}%c";
+	char *str = "int i = %1$d;%2$c#include <stdio.h>%2$c#include <stdlib.h>%2$c#include <string.h>%2$c%2$cint main(){%2$c%3$cif (strcmp(__FILE__, %4$cSully.c%4$c))%2$c%3$c%3$c--i;%2$c%3$cif (i < 0)%2$c%3$c%3$creturn (0);%2$c%3$cchar filename[10];%2$c%3$csprintf(filename, %4$cSully_%%d.c%4$c, i);%2$c%3$cFILE *fptr = fopen(filename, %4$cw%4$c);%2$c%3$cif (!fptr)%2$c%3$c%3$creturn (1);%2$c%2$c%3$cchar *str = %4$c%5$s%4$c;%2$c%2$c%3$cfprintf(fptr, str, i, 10, 9, 34, str);%2$c%3$cfclose(fptr);%2$c%2$c%3$cif (i >= 0) {%2$c%3$c%3$cchar command[80];%2$c%3$c%3$csprintf(command, %4$cgcc -Wall -Werror -Wextra %%s -o Sully_%%d && ./Sully_%%d%4$c, filename, i, i);%2$c%3$c%3$csystem(command);%2$c%3$c}%2$c%3$creturn (0);%2$c}%2$c";
 
-	fprintf(fptr, str, i, 10, 10, 10, 10, 10, 10, 9, 34, 34, 10, 9, 9, 10, 9, 10, 9, 9, 10, 9, 10, 9, 34, 34, 10, 9, 34, 34, 10, 10, 9, 34, str, 34, 10, 10, 9, 10, 9, 10, 10, 9, 10, 9, 9, 10, 9, 9, 34, 34, 10, 9, 9, 10, 9, 10, 9, 10, 10);
+	fprintf(fptr, str, i, 10, 9, 34, str);
 	fclose(fptr);
 
 	if (i >= 0) {
