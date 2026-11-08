@@ -24,7 +24,7 @@ Sully: Sully.o
 	$(CC) $(CFLAGS) $< -o $@
 
 cSully:
-	rm -f Sully_[0-5] Sully_[0-5].s
+	rm -f Sully_[0-5] Sully_[0-5].o Sully_[0-5].s
 
 %.o: %.s
 	nasm -f elf64 -g -F dwarf $< -o $@
